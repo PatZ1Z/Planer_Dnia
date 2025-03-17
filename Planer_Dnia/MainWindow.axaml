@@ -1,0 +1,50 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+        x:Class="Planer_Dnia.MainWindow"
+        Title="Planer_Dnia">
+    
+        <StackPanel HorizontalAlignment="Center">
+                <TextBlock Text="Wpisz nazwę zadania: "></TextBlock>
+                <TextBox x:Name="NazwaZadania"></TextBox>
+                <TextBlock Text="Wybierz kategorię zadania: "></TextBlock>
+                <RadioButton x:Name="RadioPraca" Content="Praca"></RadioButton>
+                <RadioButton x:Name="RadioRelaks" Content="Relaks"></RadioButton>
+                <RadioButton x:Name="RadioZakupy" Content="Zakupy"></RadioButton>
+                <RadioButton x:Name="RadioHobby" Content="Hobby"></RadioButton>
+                
+                <Button Content="Stwórz Zadanie" Click="CreateNewGrid"></Button>
+                
+                
+                
+                <Grid>
+                        <Grid.RowDefinitions>
+                                <RowDefinition  Height="Auto" ></RowDefinition>
+                                <RowDefinition  Height="Auto" ></RowDefinition>
+                                <RowDefinition  Height="Auto" ></RowDefinition>
+                                <RowDefinition  Height="Auto" ></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                
+                        </Grid.ColumnDefinitions>
+                        
+                        <TextBlock Grid.Row="0" Grid.Column="0" Margin="10" Text="Nazwa Zadania" />
+                        
+                        <ComboBox Grid.Row="1" >
+                                <ComboBoxItem Content="Praca"></ComboBoxItem>
+                                <ComboBoxItem Content="Relaks"></ComboBoxItem>
+                                <ComboBoxItem Content="Zakupy"></ComboBoxItem>
+                                <ComboBoxItem Content="Hobby"></ComboBoxItem>
+                        </ComboBox>
+                        <CheckBox Grid.Row="2" Content="Ukończone"></CheckBox>
+                        <Button Grid.Row="3" Content="Usuń"></Button>
+                        
+                        
+                        
+                </Grid>
+                <StackPanel x:Name="NewGrids" Orientation="Horizontal" HorizontalAlignment="Left"></StackPanel>
+        </StackPanel>
+</Window>
