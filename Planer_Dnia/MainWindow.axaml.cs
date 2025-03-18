@@ -1,7 +1,10 @@
 using System.Diagnostics;
 using System.Drawing;
+using Avalonia;
 using Avalonia.Controls;
+using Avalonia.Controls.Documents;
 using Avalonia.Interactivity;
+using Avalonia.Media;
 
 namespace Planer_Dnia;
 
@@ -45,7 +48,23 @@ public partial class MainWindow : Window
             Kategoria = 4;
         }
         
-        var grid = new Grid();
+        var border = new Border()
+        {
+            Background = Brushes.Green,  
+            BorderBrush = Brushes.Black, 
+            BorderThickness = new Thickness(2), 
+            CornerRadius = new CornerRadius(10), 
+            Margin = new Thickness(10) 
+        };
+        
+        
+        
+        var grid = new Grid()
+        {
+            Background = Brushes.Green,
+            Margin = new Thickness(10),
+            
+        };
         
         grid.ColumnDefinitions.Add(new ColumnDefinition(GridLength.Auto));
         grid.RowDefinitions.Add(new RowDefinition(GridLength.Auto));
@@ -53,10 +72,37 @@ public partial class MainWindow : Window
         grid.RowDefinitions.Add(new RowDefinition(GridLength.Auto));
         grid.RowDefinitions.Add(new RowDefinition(GridLength.Auto));
         
-        var textBlock = new TextBlock{ Text = NazwaZad, HorizontalAlignment = Avalonia.Layout.HorizontalAlignment.Center};
-        var comboBox =  new ComboBox { Items = { "Praca","Relaks","Zakupy","Hobby","Nie wybrano kategori"}, Name = "wybor", SelectedIndex = Kategoria};
-        var ukonczone = new CheckBox { Content = "Ukończone?" };
-        var usun = new Button { Content = "Usuń" };
+        var textBlock = new TextBlock{ Text = NazwaZad,
+            HorizontalAlignment = Avalonia.Layout.HorizontalAlignment.Center,
+            Margin = new Thickness(10),
+            FontWeight = FontWeight.Bold,
+            
+        };
+        var comboBox =  new ComboBox { Items = { "Praca","Relaks","Zakupy","Hobby","Nie wybrano kategori"},
+            Name = "wybor",
+            SelectedIndex = Kategoria
+            
+        };
+        var ukonczone = new CheckBox
+        {
+            Content = "Ukończone?"
+            
+        };
+        var usun = new Button
+        {
+            Content = "Usuń"
+            
+        };
+        
+        usun.Click += (sender, args) =>
+        {
+            var button = (Button)sender;
+            var parentGrid = (Grid)button.Parent;
+            var parentBorder = (Border)parentGrid.Parent;
+            NewGrids.Children.Remove(parentBorder);
+        };
+
+        
         
         Grid.SetColumn(textBlock, 0);
         Grid.SetRow(textBlock, 0);
@@ -72,7 +118,11 @@ public partial class MainWindow : Window
         grid.Children.Add(ukonczone);
         grid.Children.Add(usun);
         
-        NewGrids.Children.Add(grid);
+                
+        border.Child = grid;
+        NewGrids.Children.Add(border);
         
     }
+
+    
 }

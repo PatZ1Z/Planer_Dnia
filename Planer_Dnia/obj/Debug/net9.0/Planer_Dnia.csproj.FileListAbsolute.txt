@@ -64,3 +64,4 @@
 /home/patryk/RiderProjects/Planer_Dnia/Planer_Dnia/obj/Debug/net9.0/Planer_D.392D61C0.Up2Date
 /home/patryk/RiderProjects/Planer_Dnia/Planer_Dnia/obj/Debug/net9.0/Planer_Dnia.genruntimeconfig.cache
 /home/patryk/RiderProjects/Planer_Dnia/Planer_Dnia/obj/Debug/net9.0/ref/Planer_Dnia.dll
+/home/patryk/RiderProjects/Planer_Dnia/Planer_Dnia/obj/Debug/net9.0/Planer_Dnia.sourcelink.json
